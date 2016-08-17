@@ -1,0 +1,45 @@
+name: DataAPIConfigDirectives
+version: 0.01
+
+description: <__trans phrase="Endpoints for config directives.">
+plugin_link: https://github.com/masiuchi/mt-plugin-data-api-config-directives
+
+author_name: Masahiro Iuchi
+author_link: https://github.com/masiuchi
+
+applications:
+  data_api:
+    endpoints:
+      - id: list_config_directives
+        route: /config_directives
+        default_params:
+        error_codes:
+          403: Do not have permission to retrieve the list of config directives.
+        handler: $DataAPIConfigDirectives::MT::Plugin::DataAPIConfigDirectives::DataAPI::Endpoint::list
+        verb: GET
+        version: 1
+
+      - id: get_config_directive
+        route: /config_directives/:config_directive_name
+        error_codes:
+          403: Do not have permission to retrieve the requested config directive.
+        handler: $DataAPIConfigDirectives::MT::Plugin::DataAPIConfigDirectives::DataAPI::Endpoint::get
+        verb: GET
+        version: 1
+
+      - id: update_config_directive
+        route: /config_directives/:config_directive_name
+        error_codes:
+          403: Do not have permission to update the requested config directive.
+        handler: $DataAPIConfigDirectives::MT::Plugin::DataAPIConfigDirectives::DataAPI::Endpoint::update
+        verb: PUT
+        version: 1
+
+      - id: reset_config_directive
+        route: /config_directives/:config_directive_name
+        error_codes:
+          403: Do not have permission to reset the requested config directive.
+        handler: $DataAPIConfigDirectives::MT::Plugin::DataAPIConfigDirectives::DataAPI::Endpoint::reset
+        verb: DELETE
+        version: 1
+
